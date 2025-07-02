@@ -1,115 +1,97 @@
-# 🧑‍💻 Create and Manage AD Users, Groups, and OUs (GUI-Based Lab)
-
-## 📌 Why This Lab?
-
-This hands-on lab demonstrates a fundamental skill in IT and system administration: managing **Active Directory users, groups, and organizational units (OUs)**. It's designed to be beginner-friendly and use the GUI (Graphical User Interface), making it easy for new learners to follow without needing PowerShell.
 
 ---
 
-## 🎯 Lab Objectives
+## 🔧 Lab Setup Instructions
 
-- Create a clean OU structure (`Employees`, `IT`, `HR`)
-- Add Active Directory user accounts using the GUI
-- Create security groups and manage group membership
-- Organize screenshots and documentation for GitHub
-- Bonus: Add PowerShell automation (optional)
+### 1️⃣ Download ISOs
+- [ ] Windows Server 2019 ISO (Evaluation): https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019
+- [ ] (Optional) Windows 10 ISO: https://www.microsoft.com/en-us/software-download/windows10
 
----
-
-## 🧰 Requirements
-
-- Windows Server 2019 or 2022 (Domain Controller set up)
-- Active Directory Domain Services (AD DS role installed)
-- Domain example: `corp.local`
-- Access to **Active Directory Users and Computers** (`dsa.msc`)
+📸 _screenshots/Step1-Download-ISO.png_
 
 ---
 
-## 🗂️ Project Structure
+### 2️⃣ Create Virtual Machines in VirtualBox
 
+**VM 1: Domain Controller**
+- Name: `AD-DC`
+- Type: Windows Server 2019
+- RAM: 4GB
+- Disk: 60GB
+- Network: Host-only Adapter
 
-
----
-
-## 🪜 Step-by-Step Lab Instructions (GUI)
-
-### 1️⃣ Open Active Directory Users and Computers
-
-- Press `Windows + R` → type `dsa.msc` → hit Enter
-- Make sure you're connected to your domain (e.g., `corp.local`)
+📸 _screenshots/Step2-Create-VM.png_
 
 ---
 
-### 2️⃣ Create Organizational Units (OUs)
+### 3️⃣ Install and Configure Server 2019
 
-1. Right-click on your domain name (e.g., `corp.local`)
-2. Choose **New > Organizational Unit**
-3. Create these OUs:
-   - `Employees`
-   - `IT` (inside Employees)
-   - `HR` (inside Employees)
+- Boot into ISO, complete installation
+- Rename PC to `AD-DC`
+- Set Admin password
 
-📸 *Upload screenshot as:* `screenshots/ou-structure.png`
+📸 _screenshots/Step3-Install-Server2019.png_
 
 ---
 
-### 3️⃣ Create Users in OUs
+### 4️⃣ Set Static IP
 
-1. Right-click on the `IT` OU → **New > User**
-2. Example:
-   - First Name: `Tony`
-   - Last Name: `Smith`
-   - Username: `tsmith`
-   - Password: `P@ssw0rd!` (or your standard test password)
-   - Uncheck "User must change password at next logon" (optional)
-3. Repeat to add more users
+- IP: `192.168.1.10`
+- Subnet: `255.255.255.0`
+- Gateway: `192.168.1.1` (or blank)
+- DNS: `127.0.0.1`
 
-📸 *Upload screenshot as:* `screenshots/create-users.png`
+📸 _screenshots/Step4-Set-IP.png_
 
 ---
 
-### 4️⃣ Create Security Groups
+### 5️⃣ Install AD DS Role
 
-1. Right-click on the `IT` OU → **New > Group**
-2. Set group name: `IT_Staff`
-   - Group scope: **Global**
-   - Group type: **Security**
-3. Do the same for `HR_Staff` in the HR OU
+- Server Manager → Add Roles → AD DS
+- Promote to Domain Controller
+- Domain: `lab.local`
 
-📸 *Upload screenshot as:* `screenshots/create-groups.png`
+📸 _screenshots/Step5-Install-AD-DS.png_
 
 ---
 
-### 5️⃣ Add Users to Groups
+### 6️⃣ Verify AD Setup
 
-1. Double-click the group (e.g., `IT_Staff`)
-2. Go to the **Members** tab → Click **Add**
-3. Enter the username (e.g., `tsmith`) → Click OK
+- Open **Active Directory Users and Computers**
+- Create Organizational Units (OUs)
+- Add user accounts and groups
 
-📸 *Upload screenshot as:* `screenshots/add-user-to-group.png`
+📸 _screenshots/Step6-AD-Verified.png_
 
 ---
 
-## 💻 Bonus: PowerShell Automation (Optional)
+### 7️⃣ (Optional) Add Windows 10 Client
+
+- Configure IP: `192.168.1.20`
+- DNS: `192.168.1.10` (DC)
+- Join Domain: `lab.local`
+
+📸 _screenshots/Step7-Win10-JoinDomain.png_
+
+---
+
+## 💡 Bonus PowerShell Scripts
+
+| Script | Description |
+|--------|-------------|
+| `install_features.ps1` | Install AD DS and DNS roles |
+| `create_users.ps1`     | Create bulk users in OU     |
+
+---
+
+## 📜 Scripts
+
+### `scripts/install_features.ps1`
 
 ```powershell
-# scripts/create-users.ps1
+Install-WindowsFeature -Name AD-Domain-Services, DNS -IncludeManagementTools
 
-Import-Module ActiveDirectory
 
-# Create a user in the IT OU
-New-ADUser -Name "Tony Smith" -GivenName "Tony" -Surname "Smith" `
-  -SamAccountName "tsmith" -UserPrincipalName "tsmith@corp.local" `
-  -AccountPassword (ConvertTo-SecureString "P@ssw0rd!" -AsPlainText -Force) `
-  -Enabled $true -Path "OU=IT,OU=Employees,DC=corp,DC=local"
-
-# Create group if not already created
-if (-not (Get-ADGroup -Filter {Name -eq "IT_Staff"})) {
-    New-ADGroup -Name "IT_Staff" -GroupScope Global -GroupCategory Security -Path "OU=IT,OU=Employees,DC=corp,DC=local"
-}
-
-# Add user to the group
-Add-ADGroupMember -Identity "IT_Staff" -Members "tsmith"
 
 
 
