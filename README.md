@@ -7,7 +7,7 @@
 - [ ] Windows Server 2019 ISO (Evaluation): https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019
 - [ ] (Optional) Windows 10 ISO: https://www.microsoft.com/en-us/software-download/windows10
 
-![Image Alt](image_url)
+![Image Alt]([image_url](https://github.com/techtracker619/adlab/blob/56557d2ba3b32e2b25422e6f71eaa8c69ad87845/VirtualBox_AC-DC-SERVER_23_06_2025_22_04_05.png))
 ---
 
 ### 2️⃣ Create Virtual Machines in VirtualBox
