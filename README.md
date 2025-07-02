@@ -111,7 +111,7 @@ This repository provides a **step-by-step beginner-friendly lab setup** for buil
    - Gateway: (Optional) `192.168.100.1`
    - DNS: `127.0.0.1`
 
-![imagealt](
+![imagealt](https://github.com/techtracker619/adlab/blob/eae1ac477b3f9971e2e5f74676b5cbf1a9b098ed/screenshots/VirtualBox_AC-DC-SERVER_23_06_2025_22_12_55.png) 
 ---
 
 ### 🏗️ Step 6: Install Active Directory Domain Services (AD DS)
