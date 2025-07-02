@@ -24,7 +24,7 @@ This repository provides a **step-by-step beginner-friendly lab setup** for buil
 
 3. Run the installer and use default settings.
 
-📸 _Add a screenshot of the installation wizard here._
+![imagealt](https://github.com/techtracker619/adlab/blob/97777de0eba89b0028240bddb88c8c7424a8ad0d/screenshots/WINDOWSERVER%20%232.PNG)
 
 ---
 
