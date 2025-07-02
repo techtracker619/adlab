@@ -126,7 +126,7 @@ This repository provides a **step-by-step beginner-friendly lab setup** for buil
    - Select this server
    - Add **AD DS** and **DNS Server**
 
-📸 _Screenshot of selected roles._
+![imagealt](https://github.com/techtracker619/adlab/blob/212f176521ab5d14f5461df343e42866b9e1e409/screenshots/VirtualBox_AC-DC-SERVER_23_06_2025_22_57_46.png)
 
 ---
 
