@@ -56,8 +56,7 @@ This repository provides a **step-by-step beginner-friendly lab setup** for buil
    - Storage: Dynamically allocated
    - Size: At least 60 GB
 
-📸 _Add screenshots of VM settings._
-
+![imagealt](https://github.com/techtracker619/adlab/blob/4b1cc759393b02f6bf3171e4002b19b4a4a0c087/screenshots/VL%234B.PNG)
 ---
 
 ### 🧩 Step 4: Install Windows Server 2019
