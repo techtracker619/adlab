@@ -113,7 +113,7 @@ This repository provides a **step-by-step beginner-friendly lab setup** for buil
 
 ![imagealt](https://github.com/techtracker619/adlab/blob/0c78c95163f282859a77ddb7b39f26c659897e94/screenshots/VirtualBox_AC-DC-SERVER_23_06_2025_23_32_25.png)
 ![imagealt](https://github.com/techtracker619/adlab/blob/c7e5d8bad6cbe57b1f6cd093e17b5c9542b3f282/screenshots/VirtualBox_AC-DC-SERVER_23_06_2025_23_43_39.png)
-![imagealt](
+![imagealt](https://github.com/techtracker619/adlab/blob/7c35181286bd058efc7bb2436063337f4c05968e/screenshots/VirtualBox_AC-DC-SERVER_23_06_2025_23_46_05.png)
 
 ---
 
