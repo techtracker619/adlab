@@ -111,8 +111,7 @@ This repository provides a **step-by-step beginner-friendly lab setup** for buil
    - Gateway: (Optional) `192.168.100.1`
    - DNS: `127.0.0.1`
 
-📸 _Add screenshot of IPv4 static IP configuration._
-
+![imagealt](
 ---
 
 ### 🏗️ Step 6: Install Active Directory Domain Services (AD DS)
