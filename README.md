@@ -143,7 +143,8 @@ This repository provides a **step-by-step beginner-friendly lab setup** for buil
    - Set DSRM password
    - Leave defaults and click Install
 
-📸 _Screenshot of each step and reboot._
+![imagealt](https://github.com/techtracker619/adlab/blob/a615c03962db0254bd2a5ce6283bc420d3c4c126/screenshots/VirtualBox_AC-DC-SERVER_23_06_2025_23_08_52.png)
+![imagealt](
 
 ---
 
