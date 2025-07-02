@@ -43,31 +43,60 @@ This repository provides a **step-by-step beginner-friendly lab setup** for buil
 
 ## ⚙️ Step-by-Step Lab Setup
 
-### 🔧 Step 3: Create a Virtual Machine (VM)
+### 🔧 Step 3: Create Virtual Machine with ISO Attached (Recommended Beginner Method)
 
-1. Open VirtualBox.
-2. Click **New** → Name it `AD-DC` or `DomainController`.
-3. Set:
-   - Type: `Microsoft Windows`
-   - Version: `Windows 2019 (64-bit)`
-4. Memory: 4 GB minimum (4096 MB)
-5. Create a virtual hard disk:
-   - Format: VDI
-   - Storage: Dynamically allocated
-   - Size: At least 60 GB
+1. Open **Oracle VirtualBox** and click the **New (Add +)** button.
+2. In the **Create Virtual Machine** window, configure the following:
+   - **Name**: `AC-DC-SERVER` or `AD-DC`
+   - **Folder**: Leave as default (or select a custom location)
+   - **ISO Image**: Click the 📂 folder icon → Browse to your downloaded `Windows Server 2019` ISO file
+   - **Edition**: Auto-detects (e.g., *Windows Server 2019 Standard Evaluation*)
+   - **Type**: Microsoft Windows  
+   - **Version**: Windows Server 2019 (64-bit)
 
-![imagealt](https://github.com/techtracker619/adlab/blob/4b1cc759393b02f6bf3171e4002b19b4a4a0c087/screenshots/VL%234B.PNG)
+3. ✅ **Check** the option: **Skip Unattended Installation**  
+   > This gives you full control of the Windows installation process and avoids automation.
+
+4. Click **Next**, then continue:
+   - **Memory Size**: Set to at least **4096 MB (4 GB)**
+   - **Hard Disk**: Create a new virtual hard disk
+     - Type: VDI (VirtualBox Disk Image)
+     - Storage: Dynamically allocated
+     - Size: At least **60 GB**
+
+5. Click **Finish** to create the virtual machine with the ISO already attached.
+
+📸 _Add a screenshot like this one:_  
+`/screenshots/step3-virtualbox-create-vm-with-iso.png`
+
 ---
 
-### 🧩 Step 4: Install Windows Server 2019
+### 🧩 Step 4: Boot and Install Windows Server 2019 from ISO
 
-1. Start the VM and select the ISO as the boot disk.
-2. Complete installation:
-   - Choose Standard Edition (Desktop Experience)
-   - Use entire disk (default)
-   - Set a secure Administrator password
+1. In VirtualBox, select the new VM (`AC-DC-SERVER`) and click **Start**.
+2. The VM will boot directly into the Windows Server 2019 installation wizard.
+3. Follow the installer:
+   - Language: English (United States)
+   - Edition: **Windows Server 2019 Standard (Desktop Experience)**
+   - Accept license terms
+   - Choose **Custom: Install Windows Only (Advanced)**
+   - Select the virtual hard disk → Click **Next**
 
-📸 _Add screenshots of installation and login._
+4. Installation will begin and the VM will restart once complete.
+5. After reboot, you’ll be asked to create an **Administrator password**.
+6. Login with your credentials — you’re now inside Windows Server 2019!
+
+📸 _Recommended screenshots:_  
+- Installation wizard screen  
+- Edition selection  
+- Disk selection  
+- Password setup  
+- First login
+
+---
+
+✅ This method matches the newer VirtualBox workflow and is easier for first-time users since it bundles the ISO setup with VM creation.  
+
 
 ---
 
