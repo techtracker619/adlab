@@ -66,7 +66,7 @@ This repository provides a **step-by-step beginner-friendly lab setup** for buil
 
 5. Click **Finish** to create the virtual machine with the ISO already attached.
 
-![imagealt](
+![imagealt](https://github.com/techtracker619/adlab/blob/b8beccfe17a19ad0bd616ff773b176346e30c8aa/screenshots/VL%234B.PNG)
 
 ---
 
