@@ -66,8 +66,7 @@ This repository provides a **step-by-step beginner-friendly lab setup** for buil
 
 5. Click **Finish** to create the virtual machine with the ISO already attached.
 
-📸 _Add a screenshot like this one:_  
-`/screenshots/step3-virtualbox-create-vm-with-iso.png`
+![imagealt](
 
 ---
 
