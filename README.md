@@ -144,7 +144,7 @@ This repository provides a **step-by-step beginner-friendly lab setup** for buil
    - Leave defaults and click Install
 
 ![imagealt](https://github.com/techtracker619/adlab/blob/a615c03962db0254bd2a5ce6283bc420d3c4c126/screenshots/VirtualBox_AC-DC-SERVER_23_06_2025_23_08_52.png)
-![imagealt](
+![imagealt](https://github.com/techtracker619/adlab/blob/8b50438cd0c7a1814ba66db50528603f57befebe/screenshots/VirtualBox_AC-DC-SERVER_23_06_2025_23_09_41.png)
 
 ---
 
@@ -152,51 +152,9 @@ This repository provides a **step-by-step beginner-friendly lab setup** for buil
 
 1. After reboot, login and open:
    - **Server Manager** → Tools → **Active Directory Users and Computers**
-2. Create:
-   - Organizational Units (OUs)
-   - Sample Users
-   - Security Groups
 
-📸 _Screenshot of ADUC with OUs and users._
 
----
 
-## 🧠 Bonus Section: Automation with PowerShell (Scripts in Separate Repo or Folder)
-
-To further automate this lab, you can use PowerShell to:
-
-- Install AD roles
-- Promote the server to a domain controller
-- Create OUs
-- Bulk-create users
-- Create security groups and assign members
-
-These scripts will be available in a dedicated `scripts/` folder or separate repo.
-
-### Scripts You'll Eventually Have:
-
-| Script Name                     | Function                                 |
-|--------------------------------|------------------------------------------|
-| `install_features.ps1`         | Installs AD DS + DNS roles               |
-| `promote_to_dc.ps1`            | Promotes server to domain controller     |
-| `create_ous.ps1`               | Creates OUs like IT, HR, Users           |
-| `create_users.ps1`             | Creates 10 sample users                  |
-| `create_group_and_add_users.ps1` | Creates group and adds users           |
-
-> These PowerShell scripts are designed for full automation and will be added in a separate script-focused README.
-
----
-
-## 📸 Screenshots Folder
-
-Store all screenshots inside the `/screenshots` folder.  
-Reference them like this inside the README:
-
-```markdown
-![Step 5 - Static IP](./screenshots/static-ip.png)
-```
-
----
 
 ## ✅ Key Skills Practiced
 
