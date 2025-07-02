@@ -6,11 +6,10 @@ This repository provides a **step-by-step beginner-friendly lab setup** for buil
 
 ## 📦 What You'll Need
 
-| Tool               | Purpose                                        |
-|-------------------|------------------------------------------------|
-| Oracle VirtualBox | Free tool to run virtual machines (VMs)        |
-| Windows Server 2019 ISO | The OS for the Domain Controller VM |
-| (Optional) Windows 10 ISO | For testing domain join as a client |
+| Tool                    | Purpose                                          |
+|-------------------------|--------------------------------------------------|
+| Oracle VirtualBox       | Free tool to run virtual machines (VMs)          |
+| Windows Server 2019 ISO | OS for the Domain Controller (DC) VM             |
 
 ---
 
@@ -21,187 +20,161 @@ This repository provides a **step-by-step beginner-friendly lab setup** for buil
 1. Visit the official Oracle VirtualBox download page:  
    🔗 https://www.virtualbox.org/wiki/Downloads
 
-2. Download the version that matches your operating system (Windows, macOS, Linux).
+2. Download the version that matches your OS (Windows, macOS, or Linux).
 
-3. Install it using the setup wizard (default settings are fine).
+3. Run the installer and use default settings.
 
-📸 Add a screenshot of the VirtualBox installation wizard.
+📸 _Add a screenshot of the installation wizard here._
 
 ---
 
 ### ✅ Step 2: Download Windows Server 2019 ISO
 
-1. Visit Microsoft Evaluation Center:  
+1. Go to Microsoft Evaluation Center:  
    🔗 https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019
 
-2. Select **ISO** and fill out the short form (name, email, etc.).
+2. Choose **ISO** as the download format and fill in the basic form.
 
-3. Download the ISO file and save it somewhere you can find it later.
+3. Download the ISO and store it where you'll mount it in VirtualBox.
 
-📸 Screenshot suggestion: Form filled out, download in progress.
-
-> 📝 This is a trial version valid for 180 days — more than enough for learning.
-
----
-
-### (Optional) Download Windows 10 ISO
-
-1. Visit the Windows 10 download page:  
-   🔗 https://www.microsoft.com/en-us/software-download/windows10ISO
-
-2. Select your version and download the ISO.
-
-> This is useful if you want to test domain join with a client machine.
+📸 _Screenshot idea: Form filled out and download progress._
 
 ---
 
 ## ⚙️ Step-by-Step Lab Setup
 
-### 🔧 Step 3: Create a Virtual Machine in VirtualBox for Server 2019
+### 🔧 Step 3: Create a Virtual Machine (VM)
 
-1. Open VirtualBox.  
-2. Click **New** → Name it `AD-DC` or `DomainController`.  
-3. Choose:  
-   - Type: `Microsoft Windows`  
-   - Version: `Windows 2019 (64-bit)`  
-4. Set memory to at least **4096 MB (4 GB)**.  
-5. Create a virtual hard disk:  
-   - Size: At least **60 GB**  
-   - Format: `VDI` → Dynamically allocated  
-6. Once VM is created, click **Settings**:  
-   - **Storage** → Mount the Server 2019 ISO  
-   - **Network** → Change adapter to `Host-only Adapter` (for local lab)
+1. Open VirtualBox.
+2. Click **New** → Name it `AD-DC` or `DomainController`.
+3. Set:
+   - Type: `Microsoft Windows`
+   - Version: `Windows 2019 (64-bit)`
+4. Memory: 4 GB minimum (4096 MB)
+5. Create a virtual hard disk:
+   - Format: VDI
+   - Storage: Dynamically allocated
+   - Size: At least 60 GB
 
-📸 Add screenshots of each step.
+📸 _Add screenshots of VM settings._
 
 ---
 
 ### 🧩 Step 4: Install Windows Server 2019
 
-1. Start the VM.  
-2. Follow the on-screen setup:  
-   - Language: English  
-   - Edition: Standard (Desktop Experience)  
-   - Disk: Use the entire disk (default)  
-3. Set a secure **Administrator** password.
+1. Start the VM and select the ISO as the boot disk.
+2. Complete installation:
+   - Choose Standard Edition (Desktop Experience)
+   - Use entire disk (default)
+   - Set a secure Administrator password
 
-📸 Screenshot of language/edition selection, installation progress, first login.
+📸 _Add screenshots of installation and login._
 
 ---
 
 ### 🌐 Step 5: Configure Static IP Address
 
-1. Log into the Server.  
-2. Open **Control Panel** → **Network and Sharing Center** → **Change Adapter Settings**  
-3. Right-click **Ethernet** → **Properties** → Select **IPv4** → Click **Properties**  
-4. Set static IP:  
-   - IP: `192.168.100.10`  
-   - Subnet: `255.255.255.0`  
-   - Gateway: Leave blank or use `192.168.100.1`  
-   - DNS: `127.0.0.1` (localhost)
+1. Go to **Network Settings**:
+   - Control Panel → Network and Sharing → Change Adapter Settings
+2. Right-click `Ethernet` → Properties → IPv4 → Properties
+3. Configure:
+   - IP: `192.168.100.10`
+   - Subnet: `255.255.255.0`
+   - Gateway: (Optional) `192.168.100.1`
+   - DNS: `127.0.0.1`
 
-📸 Screenshot of IPv4 settings window.
+📸 _Add screenshot of IPv4 static IP configuration._
 
 ---
 
-### 🏗️ Step 6: Install AD DS Role (Active Directory Domain Services)
+### 🏗️ Step 6: Install Active Directory Domain Services (AD DS)
 
-1. Open **Server Manager** → Click **Add roles and features**.  
-2. Select:  
-   - Role-based or feature-based installation  
-   - Server name (default)  
-   - **Active Directory Domain Services** + **DNS Server**  
-3. Click Next → Install
+1. Open **Server Manager**
+2. Click **Add roles and features**
+3. Choose:
+   - Role-based or feature-based installation
+   - Select this server
+   - Add **AD DS** and **DNS Server**
 
-📸 Screenshot of roles selected.
+📸 _Screenshot of selected roles._
 
 ---
 
 ### 🏁 Step 7: Promote Server to Domain Controller
 
-1. After AD DS installation, click the flag at the top of Server Manager → **Promote this server to a domain controller**.  
-2. Select **Add a new forest** → Domain name: `lab.local`  
-3. Set DSRM password → Click through default options → Install
+1. After installation, click the flag in Server Manager
+2. Choose **Promote this server to a domain controller**
+3. Options:
+   - Create a new forest
+   - Domain name: `lab.local`
+   - Set DSRM password
+   - Leave defaults and click Install
 
-📸 Screenshot of each promotion step and final reboot.
+📸 _Screenshot of each step and reboot._
 
 ---
 
-### ✅ Step 8: Verify AD Setup
+### ✅ Step 8: Verify Active Directory
 
-1. After reboot, login with domain credentials.  
-2. Open **Active Directory Users and Computers** from Server Manager → Tools.  
-3. Create:  
-   - Organizational Units (OUs)  
-   - Test Users (Right-click OU → New → User)  
+1. After reboot, login and open:
+   - **Server Manager** → Tools → **Active Directory Users and Computers**
+2. Create:
+   - Organizational Units (OUs)
+   - Sample Users
    - Security Groups
 
-📸 Screenshot of ADUC with new OUs and Users.
+📸 _Screenshot of ADUC with OUs and users._
 
 ---
 
-### (Optional) 🖥️ Step 9: Add Windows 10 Client to Domain
+## 🧠 Bonus Section: Automation with PowerShell (Scripts in Separate Repo or Folder)
 
-1. Create a second VM → Install Windows 10.  
-2. Set static IP (e.g., `192.168.100.20`) and DNS to point to the Domain Controller: `192.168.100.10`  
-3. Join Domain:  
-   - System Properties → Change Settings → Domain: `lab.local`  
-   - Enter domain admin credentials  
-   - Reboot when prompted
+To further automate this lab, you can use PowerShell to:
 
-📸 Screenshot of domain join window and success message.
+- Install AD roles
+- Promote the server to a domain controller
+- Create OUs
+- Bulk-create users
+- Create security groups and assign members
 
----
+These scripts will be available in a dedicated `scripts/` folder or separate repo.
 
-## 🔄 Bonus: PowerShell Automation Scripts
+### Scripts You'll Eventually Have:
 
-Place these inside the `/scripts` folder.
+| Script Name                     | Function                                 |
+|--------------------------------|------------------------------------------|
+| `install_features.ps1`         | Installs AD DS + DNS roles               |
+| `promote_to_dc.ps1`            | Promotes server to domain controller     |
+| `create_ous.ps1`               | Creates OUs like IT, HR, Users           |
+| `create_users.ps1`             | Creates 10 sample users                  |
+| `create_group_and_add_users.ps1` | Creates group and adds users           |
 
-### `scripts/install_features.ps1`
-```powershell
-Install-WindowsFeature -Name AD-Domain-Services, DNS -IncludeManagementTools
-```
-
-### `scripts/create_users.ps1`
-```powershell
-Import-Module ActiveDirectory
-
-for ($i = 1; $i -le 10; $i++) {
-    $username = "User$i"
-    $password = ConvertTo-SecureString "P@ssword123" -AsPlainText -Force
-    New-ADUser -Name $username `
-               -SamAccountName $username `
-               -UserPrincipalName "$username@lab.local" `
-               -AccountPassword $password `
-               -Enabled $true `
-               -Path "OU=Users,DC=lab,DC=local"
-}
-```
+> These PowerShell scripts are designed for full automation and will be added in a separate script-focused README.
 
 ---
 
 ## 📸 Screenshots Folder
 
-Place all screenshots in `/screenshots/` and reference them like this:
+Store all screenshots inside the `/screenshots` folder.  
+Reference them like this inside the README:
+
 ```markdown
-![Step 4 - Static IP Settings](./screenshots/static-ip-settings.png)
+![Step 5 - Static IP](./screenshots/static-ip.png)
 ```
 
 ---
 
-## ✅ Key Learning Outcomes
+## ✅ Key Skills Practiced
 
-- Understand VirtualBox VM creation and networking  
-- Practice installing and configuring Windows Server 2019  
-- Set up and manage Active Directory, users, OUs, and DNS  
-- Join clients to a domain  
-- Automate AD tasks using PowerShell
+- VirtualBox VM setup and networking
+- Windows Server 2019 installation and configuration
+- Active Directory setup (AD DS, DNS)
+- Organizational structure in AD
+- Real-world IT lab simulation
+- PowerShell-based automation for sysadmin tasks
 
 ---
 
-## 📚 License
-
-This lab is open-source under the MIT License.
 
 
 
