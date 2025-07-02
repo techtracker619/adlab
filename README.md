@@ -7,7 +7,7 @@
 - [ ] Windows Server 2019 ISO (Evaluation): https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019
 - [ ] (Optional) Windows 10 ISO: https://www.microsoft.com/en-us/software-download/windows10
 
- ![Image Alt]([image_url](https://github.com/techtracker619/adlab/blob/f1db18da92aadcdcf58184b94a788fdab89b3828/screenshots/WINDOWSERVER%20%232.PNG))
+ ![Image Alt]([image_url](https://github.com/techtracker619/adlab/blob/f1db18da92aadcdcf58184b94a788fdab89b3828/screenshots/WINDOWSERVER%20%232.PNG)
 
 ---
 
