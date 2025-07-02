@@ -85,7 +85,8 @@ This repository provides a **step-by-step beginner-friendly lab setup** for buil
 5. After reboot, you’ll be asked to create an **Administrator password**.
 6. Login with your credentials — you’re now inside Windows Server 2019!
 
-📸 _Recommended screenshots:_  
+![imagealt](https://github.com/techtracker619/adlab/blob/5e49b80554ece83c3290068228cf322de46c2945/screenshots/VirtualBox_AC-DC-SERVER_23_06_2025_22_15_16.png)
+
 - Installation wizard screen  
 - Edition selection  
 - Disk selection  
