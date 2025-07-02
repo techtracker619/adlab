@@ -37,7 +37,7 @@ This repository provides a **step-by-step beginner-friendly lab setup** for buil
 
 3. Download the ISO and store it where you'll mount it in VirtualBox.
 
-📸 _Screenshot idea: Form filled out and download progress._
+![imagealt](https://github.com/techtracker619/adlab/blob/1762fad05ecb56aeaf280315e8e951280477db80/screenshots/WINDOWSERVER%20%232.PNG)
 
 ---
 
