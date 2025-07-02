@@ -1,1 +1,97 @@
+## 📜 How to Create and Run These PowerShell Scripts on Windows Server 2019
+
+This guide walks you through creating and executing the AD DS installation and domain promotion scripts manually on your virtual machine.
+
+---
+
+### 🗂️ Step 1: Create a Scripts Folder
+
+1. Log in to your **Windows Server 2019** VM.
+2. Press `Win + E` to open **File Explorer**.
+3. Navigate to a working directory like `C:\` or your Desktop.
+4. Create a new folder called:
+
+```plaintext
+Scripts
+```
+
+---
+
+### 📄 Step 2: Create Script Files
+
+#### 📁 `install_features.ps1`
+
+1. Open **Notepad**.
+2. Paste the following code:
+
+```powershell
+Install-WindowsFeature -Name AD-Domain-Services, DNS -IncludeManagementTools
+```
+
+3. Click **File > Save As...**:
+   - File name: `install_features.ps1`
+   - Save as type: `All Files (*.*)`
+   - Save location: `C:\Scripts\`
+
+---
+
+#### 📁 `promote_to_dc.ps1`
+
+1. Open a new Notepad window.
+2. Paste this code:
+
+```powershell
+Import-Module ADDSDeployment
+
+Install-ADDSForest `
+    -DomainName "lab.local" `
+    -SafeModeAdministratorPassword (ConvertTo-SecureString "YourSecurePassword123!" -AsPlainText -Force) `
+    -InstallDNS `
+    -Force
+```
+
+3. Save as:
+   - File name: `promote_to_dc.ps1`
+   - Save as type: `All Files (*.*)`
+   - Save location: `C:\Scripts\`
+
+> 🔐 **Important:** Replace `"YourSecurePassword123!"` with a strong password. This is used for DSRM (Directory Services Restore Mode).
+
+---
+
+### 🛡️ Step 3: Allow PowerShell Script Execution
+
+1. Open **PowerShell as Administrator** (Start → type `PowerShell` → right-click → **Run as administrator**)
+2. Run this one-time command:
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force
+```
+
+This allows you to run scripts in the current session without permanent changes.
+
+---
+
+### ▶️ Step 4: Run the Scripts
+
+Navigate to your scripts folder:
+
+```powershell
+cd C:\Scripts
+```
+
+Then run the installation and promotion scripts one by one:
+
+```powershell
+.\install_features.ps1
+.\promote_to_dc.ps1
+```
+
+> 🖥️ Your server will reboot automatically after the second script when promoted to a domain controller.
+
+---
+
+✅ After reboot, log back in. Your server is now the Domain Controller for `lab.local`.
+
+---
 
